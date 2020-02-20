@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap&subset=latin-ext");
+
 body {
   text-align: center;
+  /* overflow: hidden; */
+  font-family: Roboto Slab;
 }
 
 .app {
@@ -7,28 +11,30 @@ body {
   animation: roll 60s alternate infinite linear, appear 4s;
   background-position: 0 0;
   background-size: cover;
-  height: 100vh;
+  height: 150vh;
 }
 
 .overlay {
   background-color: rgba(255, 255, 255, 0.3);
-  height: 100vh;
+  animation: pulse 10s infinite linear alternate;
+  height: 150vh;
 }
 
 p {
   margin: 0;
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 
 h1 {
   margin: 0;
-  padding: 0;
+  padding: 2vh;
+  animation: icelandicFlag 6s infinite linear both;
 }
 
 h3 {
   margin: 0;
   padding: 2vh;
-  font-size: 3vh;
+  font-size: 3.5vh;
 }
 
 input {
@@ -56,6 +62,35 @@ button {
   font-weight: bold;
 }
 
+.langs button {
+  height: 8vh;
+  padding: 0;
+  overflow: hidden;
+  margin: 1vh;
+  width: 8vh;
+  border-radius: 50%;
+  border: 0.4vh solid black;
+}
+
+img {
+  height: 100%;
+  z-index: -1;
+}
+
+#sw img {
+  transform: translate(-15%, 0);
+}
+#no img {
+  transform: translate(-10%, 0);
+}
+#en img {
+  transform: translate(-25%, 0);
+}
+
+.ok {
+  animation: appear 5s;
+}
+
 @keyframes roll {
   from {
     background-position: 0 0;
@@ -72,5 +107,32 @@ button {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  from {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@keyframes icelandicFlag {
+  0% {
+    color: white;
+  }
+  25% {
+    color: blue;
+  }
+  50% {
+    color: white;
+  }
+  75% {
+    color: red;
+  }
+  100% {
+    color: white;
   }
 }

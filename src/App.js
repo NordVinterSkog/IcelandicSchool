@@ -5,14 +5,13 @@ import "./App.css";
 class App extends Component {
   state = {
     lang: "en",
+    image: "",
     email: "",
     nick: "",
     password: "",
-    country: "",
     fields: {
       email: "E-mail address",
-      password: "Password",
-      country: "Country"
+      password: "Password"
     },
     validation: {
       email: true,
@@ -25,10 +24,22 @@ class App extends Component {
       email: "E-mail address must contain @.",
       nick: "Nickname must be at least 6 characters long.",
       password:
-        "Password must be at least 6 characters long and contain no spaces.",
-      country: "Pick a country!"
+        "Password must be at least 6 characters long and contain no spaces."
     }
   };
+
+  componentDidMount() {
+    fetch(
+      "https://pixabay.com/api/?key=14976958-ee38bbe3e71cf647de563cf70&q=reykjavik&image_type=photo&pretty=true"
+    )
+      .then(results => {
+        return results.json();
+      })
+      .then(results => {
+        let image = results.hits[Math.floor(Math.random() * 20)].largeImageURL;
+        this.setState({ image });
+      });
+  }
 
   changeLanguage = e => {
     console.log(e.target.id);
@@ -72,23 +83,27 @@ class App extends Component {
         email: "E-mail must contain @.",
         password:
           "Password must be at least 6 characters long and contain no spaces.",
-        country: "",
-        nick: "Nickname must be at least 6 characters long."
+        nick: "Nickname must be at least 5 characters long."
       },
       {
         id: "pl",
         email: "Adres e-mail musi zawierać @.",
         password:
           "Hasło musi mieć przynajmniej 6 znaków i nie zawierać spacji.",
-        country: "",
-        nick: "Pseudonim musi mieć przynajmniej 6 znaków."
+        nick: "Pseudonim musi mieć przynajmniej 5 znaków."
       },
       {
         id: "sw",
         email: "E-postadress måste innehålla @.",
-        password: "Lösenord ska inte innehålla mellanslag.",
-        country: "Välj landet.",
+        password:
+          "Lösenord  kan inte innehålla mellanslag och måste vara minst 6 tecken långt.",
         nick: "Användarnamn ska vara minst 5 tecken långt."
+      },
+      {
+        id: "no",
+        email: "Epostadress må inneholde @.",
+        password: "Løsningsord kan ikke inneholde mellomanslag.",
+        nick: "Brukernavn må være minst 5 tegn langt."
       }
     ];
     errors = errors.filter(error => error.id === lang);
@@ -97,14 +112,12 @@ class App extends Component {
       lang,
       fields: {
         email: fields[0].email,
-        password: fields[0].password,
-        country: fields[0].country
+        password: fields[0].password
       },
       errors: {
         email: errors[0].email,
         password: errors[0].password,
-        nick: errors[0].nick,
-        country: errors[0].country
+        nick: errors[0].nick
       }
     });
   };
@@ -123,7 +136,6 @@ class App extends Component {
     let email = false;
     let nick = false;
     let password = false;
-    let country = false;
     let all = false;
     if (this.state.email.indexOf("@") !== -1) {
       email = true;
@@ -137,10 +149,8 @@ class App extends Component {
     ) {
       password = true;
     }
-    if (this.state.country !== "") {
-      country = true;
-    }
-    if (email && nick && password && country) {
+
+    if (email && nick && password) {
       all = true;
     }
 
@@ -149,7 +159,6 @@ class App extends Component {
         email,
         nick,
         password,
-        country,
         all
       }
     });
@@ -158,15 +167,56 @@ class App extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="app">
+      <div
+        className="app"
+        style={{ backgroundImage: `url(${this.state.image})` }}
+      >
         <div className="overlay">
           {this.state.validation.all ? (
             <div className="ok">DOBRZE!</div>
           ) : (
             <div className="main">
+              <div className="langs">
+                <button id="pl" onClick={this.changeLanguage}>
+                  <img
+                    id="pl"
+                    src="https://restcountries.eu/data/pol.svg"
+                    alt=""
+                  />
+                </button>
+                <button id="en" onClick={this.changeLanguage}>
+                  <img
+                    id="en"
+                    src="https://restcountries.eu/data/gbr.svg"
+                    alt=""
+                  />
+                </button>
+                <button id="no" onClick={this.changeLanguage}>
+                  <img
+                    id="no"
+                    src="https://restcountries.eu/data/nor.svg"
+                    alt=""
+                  />
+                </button>
+
+                <button id="sw" onClick={this.changeLanguage}>
+                  <img
+                    id="sw"
+                    src="https://restcountries.eu/data/swe.svg"
+                    alt=""
+                  />
+                </button>
+                <button id="de" onClick={this.changeLanguage}>
+                  <img
+                    id="de"
+                    src="https://restcountries.eu/data/deu.svg"
+                    alt=""
+                  />
+                </button>
+              </div>
               <h1>Góðan daginn!</h1>
               <Message lang={this.state.lang} />
-              <form action="submit">
+              <form action="" id="form">
                 <p className="fieldName">{this.state.fields.email}:</p>
                 <input
                   type="text"
@@ -180,7 +230,7 @@ class App extends Component {
                     ? null
                     : this.state.errors.email}
                 </p>
-                <p className="fieldName">Nick:</p>
+                <p className="fieldName">Login:</p>
                 <input
                   type="text"
                   className="nick"
@@ -193,19 +243,7 @@ class App extends Component {
                     ? null
                     : this.state.errors.nick}
                 </p>
-                <p className="fieldName">{this.state.fields.country}:</p>{" "}
-                <input
-                  type="text"
-                  className="country"
-                  id="country"
-                  value={this.state.country}
-                  onChange={this.handleInput}
-                />
-                <p>
-                  {this.state.validation.country === true
-                    ? null
-                    : this.state.errors.country}
-                </p>
+
                 <p className="fieldName">{this.state.fields.password}:</p>
                 <input
                   type="password"
@@ -223,23 +261,6 @@ class App extends Component {
                   Start!
                 </button>
               </form>
-              <div className="langs">
-                <button id="pl" onClick={this.changeLanguage}>
-                  PL
-                </button>
-                <button id="no" onClick={this.changeLanguage}>
-                  NO
-                </button>
-                <button id="en" onClick={this.changeLanguage}>
-                  EN
-                </button>
-                <button id="sw" onClick={this.changeLanguage}>
-                  SW
-                </button>
-                <button id="de" onClick={this.changeLanguage}>
-                  DE
-                </button>
-              </div>
             </div>
           )}
         </div>
