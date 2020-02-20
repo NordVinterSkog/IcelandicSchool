@@ -1,0 +1,76 @@
+body {
+  text-align: center;
+}
+
+.app {
+  background-image: url(birds.jpg);
+  animation: roll 60s alternate infinite linear, appear 4s;
+  background-position: 0 0;
+  background-size: cover;
+  height: 100vh;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 100vh;
+}
+
+p {
+  margin: 0;
+  font-size: 2vh;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 2vh;
+  font-size: 3vh;
+}
+
+input {
+  height: 5vh;
+  width: 70vw;
+  border: 0.6vh solid black;
+  background-color: transparent;
+}
+
+.fieldName {
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+button {
+  background-color: transparent;
+  padding: 2vh;
+}
+
+.submit {
+  width: 70vw;
+  border: 0.6vh solid black;
+  margin: 2vh;
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+@keyframes roll {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
