@@ -33,7 +33,7 @@ const Message = props => {
     return (
       <h3>
         Willkommen zu unserem Isländischkurs für Anfänger! Bitte erstellen Sie
-        ein Konto          fortfahren.
+        ein Konto fortfahren.
       </h3>
     );
 };

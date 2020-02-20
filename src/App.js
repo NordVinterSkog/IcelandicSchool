@@ -9,6 +9,7 @@ class App extends Component {
     email: "",
     nick: "",
     password: "",
+    wait: "Please follow the link sent to your e-mail address.",
     fields: {
       email: "E-mail address",
       password: "Password"
@@ -48,32 +49,27 @@ class App extends Component {
       {
         id: "pl",
         email: "Adres e-mail",
-        password: "Hasło",
-        country: "Kraj"
+        password: "Hasło"
       },
       {
         id: "en",
-        email: "E-mail Adress",
-        password: "Password",
-        country: "Country"
+        email: "E-mail Address",
+        password: "Password"
       },
       {
         id: "no",
         email: "Epostadresse",
-        password: "Passord",
-        country: "Land"
+        password: "Passord"
       },
       {
         id: "sw",
         email: "E-postadress",
-        password: "Lösenord",
-        country: "Land"
+        password: "Lösenord"
       },
       {
         id: "de",
         email: "E-Mail-Addresse",
-        password: "Passwort",
-        country: "Land"
+        password: "Passwort"
       }
     ];
     fields = fields.filter(field => field.id === lang);
@@ -83,27 +79,39 @@ class App extends Component {
         email: "E-mail must contain @.",
         password:
           "Password must be at least 6 characters long and contain no spaces.",
-        nick: "Nickname must be at least 5 characters long."
+        nick: "Nickname must be at least 6 characters long.",
+        wait: "Please follow the link sent to your e-mail address."
       },
       {
         id: "pl",
         email: "Adres e-mail musi zawierać @.",
         password:
-          "Hasło musi mieć przynajmniej 6 znaków i nie zawierać spacji.",
-        nick: "Pseudonim musi mieć przynajmniej 5 znaków."
+          "Hasło musi mieć przynajmniej 6 znaków i nie może zawierać spacji.",
+        nick: "Pseudonim musi mieć przynajmniej 6 znaków.",
+        wait: "Proszę kliknąć w link wysłany na twój adres e-mail."
       },
       {
         id: "sw",
         email: "E-postadress måste innehålla @.",
         password:
           "Lösenord  kan inte innehålla mellanslag och måste vara minst 6 tecken långt.",
-        nick: "Användarnamn ska vara minst 5 tecken långt."
+        nick: "Användarnamn ska vara minst 6 tecken långt.",
+        wait: ""
       },
       {
         id: "no",
         email: "Epostadress må inneholde @.",
         password: "Løsningsord kan ikke inneholde mellomanslag.",
-        nick: "Brukernavn må være minst 5 tegn langt."
+        nick: "Brukernavn må være minst 6 tegn langt.",
+        wait: ""
+      },
+      {
+        id: "de",
+        email: "Die E-Mail-Adresse muss @ enthalten.",
+        password:
+          "Das Passwort muss mindestens 6 Zeichen lang sein und darf keine Leerzeichen enthalten.",
+        nick: "Der Spitzname muss mindestens 6 Zeichen lang sein.",
+        wait: "Bitte folgen Sie dem Link zu Ihrer E-Mail-Adresse."
       }
     ];
     errors = errors.filter(error => error.id === lang);
@@ -118,7 +126,8 @@ class App extends Component {
         email: errors[0].email,
         password: errors[0].password,
         nick: errors[0].nick
-      }
+      },
+      wait: errors[0].wait
     });
   };
 
@@ -173,7 +182,7 @@ class App extends Component {
       >
         <div className="overlay">
           {this.state.validation.all ? (
-            <div className="ok">DOBRZE!</div>
+            <div className="ok">{this.state.wait}</div>
           ) : (
             <div className="main">
               <div className="langs">
@@ -225,11 +234,9 @@ class App extends Component {
                   value={this.state.email}
                   onChange={this.handleInput}
                 />
-                <p>
-                  {this.state.validation.email === true
-                    ? null
-                    : this.state.errors.email}
-                </p>
+                {this.state.validation.email === true ? null : (
+                  <p>{this.state.errors.email} </p>
+                )}
                 <p className="fieldName">Login:</p>
                 <input
                   type="text"
@@ -238,12 +245,10 @@ class App extends Component {
                   value={this.state.nick}
                   onChange={this.handleInput}
                 />
-                <p>
-                  {this.state.validation.nick === true
-                    ? null
-                    : this.state.errors.nick}
-                </p>
 
+                {this.state.validation.nick === true ? null : (
+                  <p>{this.state.errors.nick} </p>
+                )}
                 <p className="fieldName">{this.state.fields.password}:</p>
                 <input
                   type="password"
@@ -252,11 +257,9 @@ class App extends Component {
                   value={this.state.password}
                   onChange={this.handleInput}
                 />
-                <p>
-                  {this.state.validation.password === true
-                    ? null
-                    : this.state.errors.password}
-                </p>
+                {this.state.validation.password === true ? null : (
+                  <p>{this.state.errors.password} </p>
+                )}
                 <button className="submit" onClick={this.validate}>
                   Start!
                 </button>
