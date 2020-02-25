@@ -4,8 +4,8 @@ const Message = props => {
   if (props.lang === "pl")
     return (
       <h3>
-        Witamy w naszym kursie języka islandzkiego dla początkujących! Załóż
-        konto by zacząć naukę.
+        Witamy na kursie języka islandzkiego dla początkujących! Załóż konto by
+        zacząć naukę.
       </h3>
     );
   if (props.lang === "en")

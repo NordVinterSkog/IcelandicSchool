@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   changeLanguage = e => {
-    console.log(e.target.id);
     let lang = e.target.id;
     let fields = [
       {
@@ -115,7 +114,6 @@ class App extends Component {
       }
     ];
     errors = errors.filter(error => error.id === lang);
-    console.log(fields);
     this.setState({
       lang,
       fields: {
@@ -174,7 +172,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div
         className="app"
@@ -215,13 +212,6 @@ class App extends Component {
                     alt=""
                   />
                 </button>
-                <button id="de" onClick={this.changeLanguage}>
-                  <img
-                    id="de"
-                    src="https://restcountries.eu/data/deu.svg"
-                    alt=""
-                  />
-                </button>
               </div>
               <h1>Góðan daginn!</h1>
               <Message lang={this.state.lang} />
@@ -234,9 +224,15 @@ class App extends Component {
                   value={this.state.email}
                   onChange={this.handleInput}
                 />
-                {this.state.validation.email === true ? null : (
-                  <p>{this.state.errors.email} </p>
-                )}
+
+                <p
+                  className={
+                    this.state.validation.email === true ? null : "active"
+                  }
+                >
+                  {this.state.errors.email}{" "}
+                </p>
+
                 <p className="fieldName">Login:</p>
                 <input
                   type="text"
@@ -246,9 +242,13 @@ class App extends Component {
                   onChange={this.handleInput}
                 />
 
-                {this.state.validation.nick === true ? null : (
-                  <p>{this.state.errors.nick} </p>
-                )}
+                <p
+                  className={
+                    this.state.validation.nick === true ? null : "active"
+                  }
+                >
+                  {this.state.errors.nick}{" "}
+                </p>
                 <p className="fieldName">{this.state.fields.password}:</p>
                 <input
                   type="password"
@@ -257,9 +257,13 @@ class App extends Component {
                   value={this.state.password}
                   onChange={this.handleInput}
                 />
-                {this.state.validation.password === true ? null : (
-                  <p>{this.state.errors.password} </p>
-                )}
+                <p
+                  className={
+                    this.state.validation.password === true ? null : "active"
+                  }
+                >
+                  {this.state.errors.password}{" "}
+                </p>
                 <button className="submit" onClick={this.validate}>
                   Start!
                 </button>
