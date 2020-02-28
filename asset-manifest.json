@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/IcelandicSchool/static/css/main.2b25e9d9.chunk.css",
+    "main.css": "/IcelandicSchool/static/css/main.a3ddfaf7.chunk.css",
     "main.js": "/IcelandicSchool/static/js/main.767b34c3.chunk.js",
     "main.js.map": "/IcelandicSchool/static/js/main.767b34c3.chunk.js.map",
     "runtime-main.js": "/IcelandicSchool/static/js/runtime-main.732ce567.js",
@@ -8,15 +8,15 @@
     "static/js/2.f86de377.chunk.js": "/IcelandicSchool/static/js/2.f86de377.chunk.js",
     "static/js/2.f86de377.chunk.js.map": "/IcelandicSchool/static/js/2.f86de377.chunk.js.map",
     "index.html": "/IcelandicSchool/index.html",
-    "precache-manifest.a10bb3026c3212095b78fd3cc3517028.js": "/IcelandicSchool/precache-manifest.a10bb3026c3212095b78fd3cc3517028.js",
+    "precache-manifest.24911409d18883066462c138d3274565.js": "/IcelandicSchool/precache-manifest.24911409d18883066462c138d3274565.js",
     "service-worker.js": "/IcelandicSchool/service-worker.js",
-    "static/css/main.2b25e9d9.chunk.css.map": "/IcelandicSchool/static/css/main.2b25e9d9.chunk.css.map",
+    "static/css/main.a3ddfaf7.chunk.css.map": "/IcelandicSchool/static/css/main.a3ddfaf7.chunk.css.map",
     "static/js/2.f86de377.chunk.js.LICENSE.txt": "/IcelandicSchool/static/js/2.f86de377.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.732ce567.js",
     "static/js/2.f86de377.chunk.js",
-    "static/css/main.2b25e9d9.chunk.css",
+    "static/css/main.a3ddfaf7.chunk.css",
     "static/js/main.767b34c3.chunk.js"
   ]
 }

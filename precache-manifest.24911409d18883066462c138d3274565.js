@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0405231782b5d63fb282a6486a979363",
+    "revision": "1ad0ee4798a733a8a184e7e5586a4986",
     "url": "/IcelandicSchool/index.html"
   },
   {
-    "revision": "b43f8764f089c00f860f",
-    "url": "/IcelandicSchool/static/css/main.2b25e9d9.chunk.css"
+    "revision": "4c118f68519ca56187a5",
+    "url": "/IcelandicSchool/static/css/main.a3ddfaf7.chunk.css"
   },
   {
     "revision": "f6513d897b1dd9e19369",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IcelandicSchool/static/js/2.f86de377.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b43f8764f089c00f860f",
+    "revision": "4c118f68519ca56187a5",
     "url": "/IcelandicSchool/static/js/main.767b34c3.chunk.js"
   },
   {
