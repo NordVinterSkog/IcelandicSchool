@@ -1,0 +1,116 @@
+.intro {
+  height: 100vh;
+  width: 100vw;
+}
+
+.flag {
+  height: 36vh;
+  width: 50vh;
+  margin: 0 auto;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  animation: appear 2s 6s reverse both;
+}
+
+.flag div {
+  height: 4vh;
+  width: 4vh;
+  position: absolute;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.white.Y {
+  animation: whiteY 0.5s 4s both ease;
+  height: 36vh;
+}
+
+.white.X {
+  animation: whiteX 0.5s 4s both ease;
+  transform-origin: center;
+  width: 50vh;
+}
+
+.flag .blue {
+  background-color: #00519d;
+  height: 36vh;
+  animation: blue 1s 5s both ease;
+  transform-origin: left;
+}
+
+.red.Y {
+  background-color: #dd1832;
+  animation: redY 4s both ease;
+  /* transform: translate(16vh, 16vh); */
+}
+
+.red.X {
+  background-color: #dd1832;
+  animation: redX 4s both ease;
+}
+
+@keyframes redY {
+  0% {
+    transform: translate(16vh, -200vh) rotate(0deg);
+  }
+  30% {
+    background-color: #00519d;
+  }
+  40% {
+    transform: translate(16vh, 16vh) rotate(720deg);
+    background-color: #dd1832;
+  }
+  100% {
+    transform: translate(16vh, 16vh) scaleY(9);
+  }
+}
+
+@keyframes redX {
+  0% {
+    transform: translate(-200vh, 16vh) rotate(0deg);
+    background-color: #00519d;
+  }
+  30% {
+    background-color: #00519d;
+  }
+  40% {
+    background-color: #dd1832;
+  }
+  40% {
+    transform: translate(16vh, 16vh) rotate(720deg);
+  }
+  100% {
+    transform: translate(23vh, 16vh) scaleX(12.5);
+  }
+}
+
+@keyframes whiteY {
+  from {
+    transform: translate(16vh, 0) scaleX(0);
+  }
+  to {
+    transform: translate(16vh, 0) scaleX(2);
+  }
+}
+
+@keyframes whiteX {
+  from {
+    transform: translate(0, 16vh) scaleY(0);
+  }
+  to {
+    transform: translate(0, 16vh) scaleY(2);
+  }
+}
+
+@keyframes blue {
+  from {
+    transform: scale(0, 1);
+  }
+  to {
+    transform: scale(12.5, 1);
+  }
+}

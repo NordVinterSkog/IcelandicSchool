@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Message from "./Message";
 import "./App.css";
+import Intro from "./Intro";
 
 class App extends Component {
   state = {
+    ready: false,
     lang: "en",
     image: "",
     email: "",
@@ -172,103 +174,117 @@ class App extends Component {
   };
 
   render() {
+    setTimeout(() => {
+      this.setState({
+        ready: true
+      });
+    }, 9000);
     return (
       <div
         className="app"
         style={{ backgroundImage: `url(${this.state.image})` }}
       >
         <div className="overlay">
-          {this.state.validation.all ? (
-            <div className="ok">{this.state.wait}</div>
-          ) : (
-            <div className="main">
-              <div className="langs">
-                <button id="pl" onClick={this.changeLanguage}>
-                  <img
-                    id="pl"
-                    src="https://restcountries.eu/data/pol.svg"
-                    alt=""
-                  />
-                </button>
-                <button id="en" onClick={this.changeLanguage}>
-                  <img
-                    id="en"
-                    src="https://restcountries.eu/data/gbr.svg"
-                    alt=""
-                  />
-                </button>
-                <button id="no" onClick={this.changeLanguage}>
-                  <img
-                    id="no"
-                    src="https://restcountries.eu/data/nor.svg"
-                    alt=""
-                  />
-                </button>
+          {this.state.ready ? (
+            <div className="active">
+              {" "}
+              {this.state.validation.all ? (
+                <div className="ok">{this.state.wait}</div>
+              ) : (
+                <div className="main">
+                  <div className="langs">
+                    <button id="pl" onClick={this.changeLanguage}>
+                      <img
+                        id="pl"
+                        src="https://restcountries.eu/data/pol.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button id="en" onClick={this.changeLanguage}>
+                      <img
+                        id="en"
+                        src="https://restcountries.eu/data/gbr.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button id="no" onClick={this.changeLanguage}>
+                      <img
+                        id="no"
+                        src="https://restcountries.eu/data/nor.svg"
+                        alt=""
+                      />
+                    </button>
 
-                <button id="sw" onClick={this.changeLanguage}>
-                  <img
-                    id="sw"
-                    src="https://restcountries.eu/data/swe.svg"
-                    alt=""
-                  />
-                </button>
-              </div>
-              <h1>Góðan daginn!</h1>
-              <Message lang={this.state.lang} />
-              <form action="" id="form">
-                <p className="fieldName">{this.state.fields.email}:</p>
-                <input
-                  type="text"
-                  className="email"
-                  id="email"
-                  value={this.state.email}
-                  onChange={this.handleInput}
-                />
+                    <button id="sw" onClick={this.changeLanguage}>
+                      <img
+                        id="sw"
+                        src="https://restcountries.eu/data/swe.svg"
+                        alt=""
+                      />
+                    </button>
+                  </div>
+                  <h1>Góðan daginn!</h1>
+                  <Message lang={this.state.lang} />
+                  <form action="" id="form">
+                    <p className="fieldName">{this.state.fields.email}:</p>
+                    <input
+                      type="text"
+                      className="email"
+                      id="email"
+                      value={this.state.email}
+                      onChange={this.handleInput}
+                    />
 
-                <p
-                  className={
-                    this.state.validation.email === true ? null : "active"
-                  }
-                >
-                  {this.state.errors.email}{" "}
-                </p>
+                    <p
+                      className={
+                        this.state.validation.email === true ? null : "active"
+                      }
+                    >
+                      {this.state.errors.email}{" "}
+                    </p>
 
-                <p className="fieldName">Login:</p>
-                <input
-                  type="text"
-                  className="nick"
-                  id="nick"
-                  value={this.state.nick}
-                  onChange={this.handleInput}
-                />
+                    <p className="fieldName">Login:</p>
+                    <input
+                      type="text"
+                      className="nick"
+                      id="nick"
+                      value={this.state.nick}
+                      onChange={this.handleInput}
+                    />
 
-                <p
-                  className={
-                    this.state.validation.nick === true ? null : "active"
-                  }
-                >
-                  {this.state.errors.nick}{" "}
-                </p>
-                <p className="fieldName">{this.state.fields.password}:</p>
-                <input
-                  type="password"
-                  className="password"
-                  id="password"
-                  value={this.state.password}
-                  onChange={this.handleInput}
-                />
-                <p
-                  className={
-                    this.state.validation.password === true ? null : "active"
-                  }
-                >
-                  {this.state.errors.password}{" "}
-                </p>
-                <button className="submit" onClick={this.validate}>
-                  Start!
-                </button>
-              </form>
+                    <p
+                      className={
+                        this.state.validation.nick === true ? null : "active"
+                      }
+                    >
+                      {this.state.errors.nick}{" "}
+                    </p>
+                    <p className="fieldName">{this.state.fields.password}:</p>
+                    <input
+                      type="password"
+                      className="password"
+                      id="password"
+                      value={this.state.password}
+                      onChange={this.handleInput}
+                    />
+                    <p
+                      className={
+                        this.state.validation.password === true
+                          ? null
+                          : "active"
+                      }
+                    >
+                      {this.state.errors.password}{" "}
+                    </p>
+                    <button className="submit" onClick={this.validate}>
+                      Start!
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
+          ) : (
+            <Intro />
           )}
         </div>
       </div>
