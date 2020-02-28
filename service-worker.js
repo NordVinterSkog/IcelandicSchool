@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/IcelandicSchool/precache-manifest.24911409d18883066462c138d3274565.js"
+  "/IcelandicSchool/precache-manifest.a73610c46ef2583cd19e3b3eecdc8d16.js"
 );
 
 self.addEventListener('message', (event) => {
